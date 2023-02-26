@@ -45,12 +45,28 @@
 			height: 100%;
 			object-fit: cover;
 		}
+        
+        .hide-controls::-webkit-media-controls {
+            display:none !important;
+        }
+        .hide-controls::-webkit-media-controls-enclosure {
+            display:none !important;
+        }
+        
+        .fullscreen {
+            position:fixed; 
+            top:0; 
+            left:0; 
+            width:100%; 
+            height:100%;
+            z-index: 9999;
+        }
 	</style>
 </head>
 <body>
 	<button onclick="playVideo()">Play</button>
 	<div id="video-container">
-		<video id="video" autoplay controls>
+		<video id="video" autoplay>
 			<source src="video.mp4" type="video/mp4">
 		</video>
 	</div>
@@ -59,7 +75,9 @@
 			var videoContainer = document.getElementById("video-container");
 			var video = document.getElementById("video");
 			videoContainer.style.display = "block";
+			video.classList.add('hide-controls');
 			video.play();
+            video.requestFullscreen();
 		}
 	</script>
 </body>
