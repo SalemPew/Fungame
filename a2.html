@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Press Me Button</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #000;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		
+		button {
+			background-color: #000;
+			color: #fff;
+			padding: 20px 40px;
+			font-size: 24px;
+			font-weight: bold;
+			border-radius: 50px;
+			border: none;
+			box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+			cursor: pointer;
+		}
+		
+		button:hover {
+			box-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
+		}
+		
+		#video-container {
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			background-color: #000;
+		}
+		
+		#video-container video {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		
+		/* Remove video controls */
+		#video::-webkit-media-controls {
+			display:none !important;
+		}
+		#video::-webkit-media-controls-enclosure {
+			display:none !important;
+		}
+		#video::-webkit-media-controls-panel {
+			display:none !important;
+		}
+		#video::-webkit-media-controls-play-button {
+			display:none !important;
+		}
+		#video::-webkit-media-controls-timeline {
+			display:none !important;
+		}
+		#video::-webkit-media-controls-current-time-display {
+			display:none !important;
+		}
+		#video::-webkit-media-controls-time-remaining-display {
+			display:none !important;
+		}
+		#video::-webkit-media-controls-mute-button {
+			display:none !important;
+		}
+		#video::-webkit-media-controls-volume-slider {
+			display:none !important;
+		}
+		#video::-webkit-media-controls-volume-slider-container {
+			display:none !important;
+		}
+		#video::-webkit-media-controls-fullscreen-button {
+			display:none !important;
+		}
+	</style>
+</head>
+<body>
+	<button onclick="playVideo()">Press Me</button>
+	<div id="video-container">
+		<video id="video" autoplay muted>
+			<source src="video.mp4" type="video/mp4">
+		</video>
+	</div>
+	<script>
+		function playVideo() {
+			var videoContainer = document.getElementById("video-container");
+			var video = document.getElementById("video");
+			videoContainer.style.display = "block";
+			video.play();
+		}
+	</script>
+</body>
+</html>
