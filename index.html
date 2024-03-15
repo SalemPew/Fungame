@@ -1,50 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Play Button</title>
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			background-color: #000;
-			height: 100vh;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-		
-		button {
-			background-color: #000;
-			color: #fff;
-			padding: 20px 40px;
-			font-size: 24px;
-			font-weight: bold;
-			border-radius: 50px;
-			border: none;
-			box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-			cursor: pointer;
-		}
-		
-		button:hover {
-			box-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
-		}
-		
-		#video-container {
-			display: none;
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			overflow: hidden;
-			background-color: #000;
-		}
-		
-		#video-container video {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-		}
+    <title>Play Button</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        button {
+            background-color: #000;
+            color: #fff;
+            padding: 20px 40px;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 50px;
+            border: none;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+        }
+        
+        button:hover {
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
+        }
+        
+        #video-container {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000;
+        }
+        
+        #video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
         
         .hide-controls::-webkit-media-controls {
             display:none !important;
@@ -61,24 +61,44 @@
             height:100%;
             z-index: 9999;
         }
-	</style>
+
+        .message-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            z-index: 9999;
+        }
+    </style>
 </head>
 <body>
-	<button onclick="playVideo()">Play</button>
-	<div id="video-container">
-		<video id="video" autoplay>
-			<source src="video.mp4" type="video/mp4">
-		</video>
-	</div>
-	<script>
-		function playVideo() {
-			var videoContainer = document.getElementById("video-container");
-			var video = document.getElementById("video");
-			videoContainer.style.display = "block";
-			video.classList.add('hide-controls');
-			video.play();
+    <button onclick="playVideo()">Play</button>
+    <div id="video-container">
+        <video id="video" autoplay>
+            <source src="video.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div id="message-container" class="message-container">
+        <p>توبة وندم: استمع إلى الرسالة وتأمل في خطاياك</p>
+    </div>
+    <script>
+        function playVideo() {
+            var videoContainer = document.getElementById("video-container");
+            var video = document.getElementById("video");
+            var messageContainer = document.getElementById("message-container");
+            videoContainer.style.display = "block";
+            video.classList.add('hide-controls');
+            video.play();
             video.requestFullscreen();
-		}
-	</script>
+            setTimeout(function(){
+                messageContainer.style.display = "block";
+            }, 5000); // Show message after 5 seconds
+        }
+    </script>
 </body>
 </html>
