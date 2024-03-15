@@ -29,39 +29,6 @@
             box-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
         }
         
-        #video-container {
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: #000;
-        }
-        
-        #video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .hide-controls::-webkit-media-controls {
-            display:none !important;
-        }
-        .hide-controls::-webkit-media-controls-enclosure {
-            display:none !important;
-        }
-        
-        .fullscreen {
-            position:fixed; 
-            top:0; 
-            left:0; 
-            width:100%; 
-            height:100%;
-            z-index: 9999;
-        }
-
         .message-container {
             position: absolute;
             top: 50%;
@@ -71,33 +38,19 @@
             color: #fff;
             padding: 20px;
             border-radius: 10px;
-            display: none;
             z-index: 9999;
         }
     </style>
 </head>
 <body>
-    <button onclick="playVideo()">Play</button>
-    <div id="video-container">
-        <video id="video" autoplay>
-            <source src="video.mp4" type="video/mp4">
-        </video>
-    </div>
+    <button onclick="showMessage()">Play</button>
     <div id="message-container" class="message-container">
         <p>توبة وندم: استمع إلى الرسالة وتأمل في خطاياك</p>
     </div>
     <script>
-        function playVideo() {
-            var videoContainer = document.getElementById("video-container");
-            var video = document.getElementById("video");
+        function showMessage() {
             var messageContainer = document.getElementById("message-container");
-            videoContainer.style.display = "block";
-            video.classList.add('hide-controls');
-            video.play();
-            video.requestFullscreen();
-            setTimeout(function(){
-                messageContainer.style.display = "block";
-            }, 5000); // Show message after 5 seconds
+            messageContainer.style.display = "block";
         }
     </script>
 </body>
